@@ -3,14 +3,14 @@ export default {
     name: "ArticleList",
 
     template: `
-      <main class="article-list" v-show="this.page == 'home'">
+      <main class="article-list" v-show="this.page == 'articles'">
 
         
 
         <h3 v-if="selectedArticle" >A la une</h3>
 
         <h3>{{ nombreArticles }} articles disponibles</h3>
-    
+   
       <section class="articles">
           <article
               v-for="article in articles.slice(0, maxArticles )"
