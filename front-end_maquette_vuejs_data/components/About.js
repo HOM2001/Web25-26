@@ -1,4 +1,4 @@
-// Définir le composant Footer
+
 
 export default {
     name: 'About', // Nom du composant

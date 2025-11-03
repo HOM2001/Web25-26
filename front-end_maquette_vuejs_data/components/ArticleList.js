@@ -2,28 +2,18 @@ export default {
 
     name: "ArticleList",
 
-    template : `
+    template: `
       <main class="article-list" v-show="this.page == 'home'">
 
-        <h1>{{ title }}</h1>
+        
 
         <h3 v-if="selectedArticle" >A la une</h3>
 
-        <article v-if="selectedArticle" class="article-detail">
-          <h2>{{ selectedArticle.title }}</h2>
-          <p><em>{{ selectedArticle.author }}</em></p>
-          <p><img alt="illustration" v-bind:src="media_path"</p>
-          <p>{{ selectedArticle.body }}</p>
-          <button @click="hideArticle(selectedArticle)" class="close-btn">
-            Fermer
-          </button>
-        </article>
-
         <h3>{{ nombreArticles }} articles disponibles</h3>
     
-        <section class="articles">
+      <section class="articles">
           <article
-              v-for="article in articles.slice(0, 5)"
+              v-for="article in articles.slice(0, maxArticles )"
               :key="article.id"
               @mouseover="hoveredId = article.id"
               @mouseout="hoveredId = null"
@@ -32,30 +22,37 @@ export default {
                   'article-hover': hoveredId === article.id
                 }"
           >
-            <h2>{{ article.title }}</h2>
-            <p class="article-resume">{{ article.resume }}</p>
-            <p v-if="showMore" class="article-content">{{ article.content }}</p>
-            <button @click="showArticle(article)" class="read-more-btn">
-              Lire plus
-            </button>
-          </article>
-        </section>
+              <h2>{{ article.title }}</h2>
+      <p class="article-resume">{{ article.resume }}</p>
+      
+      <div v-if="selectedArticle && selectedArticle.id === article.id" class="article-detail">
+        <p><em>{{ article.author }}</em></p>
+        <img :src= media_path alt="illustration" />
+        <p>{{ article.body }}</p>
+        <button @click="hideArticle(article)" class="close-btn">Fermer</button>
+      </div>
+       <div v-else>
+        <button @click="showArticle(article)" class="read-more-btn">Lire plus</button>
+      </div>
+    </article>
+     </section>
 
-      </main>
+  </main>
     `,
 
-    props : {
-        page       : {
-            type        : String,
-            required    : true ,
+    props: {
+        page: {
+            type: String,
+            required: true,
         },
     },
 
     data() {
         return {
+            "maxArticles": 10,
+            "articlesRestant": 10,
             "selectedArticle": null,
             "title": "Maquette Site de Presse / Listing",
-            "showMore": false,
             "hoveredId": null,
             "articles": [
                 {
@@ -312,27 +309,46 @@ export default {
         };
     },
 
+
     computed: {
         nombreArticles() {
-            return this.articles.length;
+            return this.articlesRestant;
         },
         media_path() {
             return `./media/${this.selectedArticle.image}`
-        }
+        },
     },
 
     methods: {
-        showArticle(art_o) {
-            console.log("lire article " + art_o.id)
-            // alert(`Affichage de l'article ${id} (simulation)`);
-            // Ici, on redirige vers une page dédiée ou on affiche le contenu complet.
-            this.selectedArticle = art_o // Met à jour l'article sélectionné
-        },
 
-        hideArticle(art_o) {
-            console.log("cacher article " + art_o.id)
-            this.selectedArticle = null
-        },
+            showArticle(article) {
+                console.log("Lire article " + article.id)
+
+                // Si l'article est déjà affiché, ne rien faire
+                if (this.selectedArticle?.id === article.id) return
+
+                // Si on a encore des articles disponibles
+                if (this.articlesRestant > 0) {
+                    this.selectedArticle = article
+                    this.articlesRestant--
+                } else {
+                    console.log("Plus d'articles disponibles")
+                }
+            },
+
+            hideArticle() {
+                if (this.selectedArticle) {
+                    console.log("Cacher article " + this.selectedArticle.id)
+                    this.selectedArticle = null
+
+                    // Remonter le compteur si on est en dessous du max
+                    if (this.articlesRestant < this.maxArticles) {
+                        this.articlesRestant++
+                    }
+                }
+
+        }
+
     },
 
 };

@@ -3,6 +3,9 @@ import { createApp } from "vue";
 import ArticleList from "./components/ArticleList.js";
 import Menu from "./components/Menu.js";
 import About from "./components/About.js";
+import Header from "./components/Header.js";
+import Footer from "./components/Footer.js";
+
 
 createApp({
 
@@ -12,6 +15,8 @@ createApp({
     ArticleList,
     About,
     'press-menu' : Menu,
+    'press-header' : Header,
+    'press-footer' : Footer,
   },
 
   data() {
