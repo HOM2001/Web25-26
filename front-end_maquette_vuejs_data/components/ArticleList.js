@@ -3,41 +3,45 @@ export default {
     name: "ArticleList",
 
     template: `
-      <main class="article-list" v-show="this.page == 'articles'">
+     <main class="article-list" v-show="page === 'home' || page === 'articles'">
+  <h3>{{ nombreArticles }} articles disponibles</h3>
 
-        
-
-        <h3 v-if="selectedArticle" >A la une</h3>
-
-        <h3>{{ nombreArticles }} articles disponibles</h3>
-   
-      <section class="articles">
-          <article
-              v-for="article in articles.slice(0, maxArticles )"
-              :key="article.id"
-              @mouseover="hoveredId = article.id"
-              @mouseout="hoveredId = null"
-              :class="{
-                  'article-card': true,
-                  'article-hover': hoveredId === article.id
-                }"
-          >
-              <h2>{{ article.title }}</h2>
+  <section :class="['articles', mode === 'articles' ? 'grid-layout' : '']">
+    <article
+      v-for="article in mode === 'home' ? articles.slice(0, maxArticles) : articles"
+      :key="article.id"
+      @mouseover="hoveredId = article.id"
+      @mouseout="hoveredId = null"
+      @click="mode === 'articles' ? showArticle(article) : null"
+      :class="{
+        'article-card': true,
+        'article-hover': hoveredId === article.id
+      }"
+    >
+      <h2>{{ article.title }}</h2>
       <p class="article-resume">{{ article.resume }}</p>
-      
-      <div v-if="selectedArticle && selectedArticle.id === article.id" class="article-detail">
-        <p><em>{{ article.author }}</em></p>
-        <img :src= media_path alt="illustration" />
-        <p>{{ article.body }}</p>
-        <button @click="hideArticle(article)" class="close-btn">Fermer</button>
+
+      <div v-if="mode === 'home'">
+        <div v-if="selectedArticle && selectedArticle.id === article.id" class="article-detail">
+          <p><em>{{ article.author }}</em></p>
+          <img :src="media_path" alt="illustration" />
+          <p>{{ article.body }}</p>
+          <button @click.stop="hideArticle()" class="close-btn">Fermer</button>
+        </div>
+        <div v-else>
+          <button @click.stop="showArticle(article)" class="read-more-btn">Lire plus</button>
+        </div>
       </div>
-       <div v-else>
-        <button @click="showArticle(article)" class="read-more-btn">Lire plus</button>
+
+      <div v-if="mode === 'articles' && selectedArticle && selectedArticle.id === article.id" class="article-detail">
+        <p><em>{{ article.author }}</em></p>
+        <img :src="media_path" alt="illustration" />
+        <p>{{ article.body }}</p>
+        <button @click.stop="hideArticle()" class="close-btn">Fermer</button>
       </div>
     </article>
-     </section>
-
-  </main>
+  </section>
+</main>
   
     `,
 
@@ -46,6 +50,10 @@ export default {
             type: String,
             required: true,
         },
+        mode: {
+            type: String,
+            default: 'home',
+        }
     },
 
     data() {
@@ -313,8 +321,12 @@ export default {
 
     computed: {
         nombreArticles() {
-            return this.articlesRestant;
-        },
+            return this.mode === 'home'
+                ? this.maxArticles
+                : this.articles.length;
+
+
+    },
         media_path() {
             return `./media/${this.selectedArticle.image}`
         },
@@ -324,17 +336,17 @@ export default {
 
             showArticle(article) {
                 console.log("Lire article " + article.id)
-
+                this.selectedArticle = article
                 // Si l'article est déjà affiché, ne rien faire
-                if (this.selectedArticle?.id === article.id) return
+               // if (this.selectedArticle?.id === article.id) return
 
                 // Si on a encore des articles disponibles
-                if (this.articlesRestant > 0) {
-                    this.selectedArticle = article
-                    this.articlesRestant--
-                } else {
-                    console.log("Plus d'articles disponibles")
-                }
+              //  if (this.articlesRestant > 0) {
+                //    this.selectedArticle = article
+                  //  this.articlesRestant--
+                //} else {
+                  //  console.log("Plus d'articles disponibles")
+               // }
             },
 
             hideArticle() {
@@ -343,9 +355,9 @@ export default {
                     this.selectedArticle = null
 
                     // Remonter le compteur si on est en dessous du max
-                    if (this.articlesRestant < this.maxArticles) {
-                        this.articlesRestant++
-                    }
+                   // if (this.articlesRestant < this.maxArticles) {
+                    //    this.articlesRestant++
+                    //}
                 }
 
         }

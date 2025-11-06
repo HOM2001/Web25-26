@@ -6,9 +6,8 @@ export default {
 
     template : `   
           <header class="header">
-            <h1>
-                {{ title }}
-            </h1>
+          <h1>{{ title }} - Page : {{ $parent.currentPage }}</h1>
+          
           </header>
     `,
 

@@ -6,7 +6,7 @@ export default {
     template : `   
         <nav>
           <ul>
-            <li><a href="#" @click.prevent="$parent.showPage('home')">Accueil</a></li>  |
+           <li><a href="#" @click.prevent="$parent.showPage('home')">Accueil</a></li>  |
             <li><a href="#" @click.prevent="$parent.showPage('articles')">Article</a></li> |
             <li><a href="#" @click.prevent="$parent.showPage('search')">Recherche</a></li>|
             <li><a href="#" @click.prevent="$parent.showPage('favorite')">Favoris</a></li>|
