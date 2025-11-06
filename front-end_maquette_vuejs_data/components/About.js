@@ -8,11 +8,13 @@ export default {
             <h1>Livrable "front-end"</h1>
             <ul>
                 <li>
-                   Page d'article : Ajout de 10 articles pour tester 
+                   Page d'accueil : 10 articles disponibles (les 10 premiers )
+                   Cliquer sur bouton lire plus pour déployer l'article et fermer pour le fermer
                 </li>            
                 <li>
-                 Page d'accueil :  ArticleList à modifier pour l'utliser dans accueil et article
-                </li>
+               Page d'accueil : Liste de tous les articles disponibles ( 25 ) sur 2 colonnes 
+               cliquer sur le cadre pour lire l'article.
+               </li>
             </ul>
           </main>
     `,
