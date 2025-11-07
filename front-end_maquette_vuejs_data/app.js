@@ -6,6 +6,7 @@ import About from "./components/About.js";
 import Header from "./components/Header.js";
 import Footer from "./components/Footer.js";
 import Search from "./components/Recherche.js"
+import Favoris from "./components/Favoris.js";
 
 
 createApp({
@@ -18,12 +19,13 @@ createApp({
     'press-article': ArticleList,
     'press-footer' : Footer,
     'press-about' : About,
-    'press-search': Search
+    'press-search': Search,
+    'press-favoris': Favoris,
   },
 
   data() {
     return {
-      currentPage: 'search', // Page par défaut
+      currentPage: 'home', // Page par défaut
 
     "articles" :[
       {

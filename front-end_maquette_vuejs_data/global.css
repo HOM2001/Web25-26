@@ -217,3 +217,53 @@ nav ul {
         grid-template-columns: 1fr;
     }
 }
+/* === Page Favoris === */
+.favoris-page {
+    padding: 20px;
+    font-family: Arial, sans-serif;
+}
+
+/* === Barre du bouton panier === */
+.favorites-bar {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 20px;
+}
+
+.favorites-bar button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.2s ease;
+}
+
+.favorites-bar button:hover {
+    background-color: #0056b3;
+}
+
+.article-table table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+}
+
+.article-table th,
+.article-table td {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: left;
+    vertical-align: top;
+}
+
+.article-table th {
+    background-color: #f0f0f0;
+    font-weight: bold;
+}
+
+.article-table td input[type="checkbox"] {
+    transform: scale(1.2);
+}

@@ -17,10 +17,12 @@
 <body id="app">
 <press-header title ="Mon Site Web"></press-header>
 <press-menu></press-menu>
-<press-about :page="currentPage"></press-about>
+<press-about v-if="currentPage==='about'"></press-about>
 <press-search v-if="currentPage ==='search'" :page="currentPage" :articles="articles"></press-search>
 <press-article v-if="currentPage === 'home'" :page="currentPage" mode="home" :articles="articles"></press-article>
 <press-article v-if="currentPage === 'articles'" :page="currentPage" mode="articles" :articles="articles"></press-article>
+<press-favoris
+v-if="currentPage==='favorite'"  :articles="articles"></press-favoris>
 <press-footer></press-footer>
 
 </body>

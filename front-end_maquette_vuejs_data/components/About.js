@@ -4,7 +4,7 @@ export default {
     name: 'About', // Nom du composant
 
     template : `   
-          <main v-show="this.page == 'about'">
+          <main  >
             <h1>Livrable "front-end"</h1>
             <ul>
                 <li>
@@ -18,17 +18,15 @@ export default {
                </li>
                <br>
                <li>
-               Page recherche : permet de rechercher des articles par mot et catégorie ( pour l'instant titre et more )
-</li>
+               Page recherche : permet de rechercher des articles par mot et catégorie ( pour l'instant titre et more 
+               </li>
+               <br>
+               Page de favoris : Tableau avec les titres , auteurs , lecture , catégorie et résumé des articles et un checkbox pour cocher et l'ajouter au favorite <br>
+               Quand on clique sur la checkbox un panier apparait avec l'article en favoris 
             </ul>
           </main>
     `,
 
-    props : {
-        page       : {
-            type        : String,
-            required    : true ,
-        },
-    }
+
 }
 
