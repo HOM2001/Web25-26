@@ -314,3 +314,135 @@ nav ul {
     line-height: 1.6;
     color: #333;
 }
+.login-page {
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 25px;
+    background-color: #fdfdfd;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    font-family: 'Segoe UI', sans-serif;
+}
+
+.login-page h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.login-form label {
+    font-weight: bold;
+    color: #555;
+}
+
+.login-form input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 1rem;
+}
+
+.login-form button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.login-form button:hover {
+    background-color: #0056b3;
+}
+
+.login-error {
+    color: red;
+    font-size: 0.95rem;
+    text-align: center;
+}
+/* === Barre de navigation === */
+.main-menu {
+    background-color: #007bff;
+    padding: 12px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+.main-menu ul {
+    display: flex;
+    gap: 20px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.main-menu li {
+    color: white;
+    font-weight: 500;
+}
+
+.main-menu a {
+    color: white;
+    text-decoration: none;
+    font-size: 1rem;
+    transition: color 0.2s ease;
+}
+
+.main-menu a:hover {
+    color: #d4eaff;
+}
+
+/* === Nom de l'utilisateur connecté === */
+.user-name {
+    margin-left: auto;
+    font-weight: bold;
+    color: #fff;
+    background-color: #0056b3;
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 0.95rem;
+}
+
+/* === Responsive === */
+@media screen and (max-width: 600px) {
+    .main-menu {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .main-menu ul {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .user-name {
+        margin-top: 10px;
+        align-self: flex-end;
+    }
+}
+.logout-btn {
+    margin-left: 10px;
+    background-color: #ff4d4d;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.85rem;
+}
+
+.logout-btn:hover {
+    background-color: #cc0000;
+}

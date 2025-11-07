@@ -7,7 +7,7 @@ import Header from "./components/Header.js";
 import Footer from "./components/Footer.js";
 import Search from "./components/Recherche.js"
 import Favoris from "./components/Favoris.js";
-
+import Login from "./components/Login.js";
 
 createApp({
 
@@ -21,13 +21,14 @@ createApp({
     'press-about' : About,
     'press-search': Search,
     'press-favoris': Favoris,
+    'press-login':  Login,
   },
 
   data() {
     return {
-      currentPage: 'home', // Page par défaut
-
-    "articles" :[
+      currentPage: 'login', // Page par défaut
+      userName: localStorage.getItem("userName") || null,
+      "articles" :[
       {
         "id": 1001,
         "title": "Les bases de Vue.js 3 : un guide pour débutants",
@@ -284,12 +285,23 @@ createApp({
   },
 
   methods: {
-    showPage(page) {
+      showPage(page) {
       this.currentPage = page;
       // Optionnel : Mettre à jour l'URL (sans rechargement)
       // window.history.pushState({}, '', `#${page}`);
     },
-  },
+      setUser(name) {
+      this.userName = name;
+      console.log("User connected : ", name)
+        localStorage.setItem("userName",name)
+    },
+      logout() {
+        this.userName = null;
+        localStorage.removeItem("userName"); // ← suppression
+        this.currentPage = "home"; // ← retour à l’accueil
+      }
+
+    },
 
 }).mount("#app");
 
