@@ -26,7 +26,7 @@ createApp({
 
   data() {
     return {
-      currentPage: 'login', // Page par défaut
+      currentPage: 'home', // Page par défaut
       userName: localStorage.getItem("userName") || null,
       "articles" :[
       {

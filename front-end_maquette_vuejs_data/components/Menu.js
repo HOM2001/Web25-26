@@ -21,7 +21,7 @@ export default {
             <li><a href="#" @click.prevent="$parent.showPage('search')">Recherche</a></li>|
             <li><a href="#" @click.prevent="$parent.showPage('favorite')">Favoris</a></li>|
             <li><a href="#" @click.prevent="$parent.showPage('about')">À propos</a></li>|
-            <li><a href="#" @click.prevent="$parent.showPage('login')">Log in</a></li>|
+            <li><a href="#" @click.prevent="$parent.showPage('login')">Log in</a></li>
             <li v-if="user" class="user-name">
         {{ user }}
         </li>
