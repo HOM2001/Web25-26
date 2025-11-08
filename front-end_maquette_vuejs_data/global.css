@@ -37,6 +37,23 @@
     margin-top: 10px;
     font-style: italic;
 }
+.article-open {
+    background-color: #f0f8ff;
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.3);
+}
+.article-meta {
+    background-color: #f8f9fa;
+    padding: 8px 12px;
+    margin-top: 8px;
+    font-size: 0.9rem;
+    border-left: 4px solid #007bff;
+    color: #333;
+}
+
+.article-meta p {
+    margin: 2px 0;
+}
 
 .read-more-btn {
     background-color: #4CAF50;
