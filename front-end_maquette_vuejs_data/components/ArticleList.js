@@ -4,7 +4,6 @@ export default {
     template: `
   <main class="article-list" v-show="page === 'home' || page === 'articles'">
     <h3>{{ nombreArticles }} articles disponibles</h3>
-
     <!-- ✅ PAGE D'ACCUEIL -->
     <div v-if="page === 'home'" class="home-layout">
       <!-- ⭐ Article phare -->
@@ -14,14 +13,13 @@ export default {
         <p>{{ articleMain.body }}</p>
         <div class="meta">
           <p><strong>Auteur :</strong> {{ articleMain.author }}</p>
-          <p><strong>Lecture :</strong> {{ articleMain.readingTime }} min</p>
           <p><strong>Catégorie :</strong> {{ articleMain.category }}</p>
         </div>
       </section>
 
       <!-- 🔷 Articles principaux + secondaires -->
       <div class="articles-group">
-        <section class="articles-principaux">
+        <section v-if="showPrincipaux" class="articles-principaux">
           <article
             v-for="article in articlesPrincipaux"
             :key="article.id"
@@ -46,7 +44,11 @@ export default {
               @mouseout="hoveredId = null"
               :ref ="'article-' +article.id"
             >
-              {{ article.title }}
+              <h4>{{ article.title }}
+              </h4>
+              <p>
+              {{article.body}}
+</p>
             </li>
           </ul>
         </section>
@@ -80,6 +82,7 @@ export default {
   >
     <h2>{{ article.title }}</h2>
     <p class="article-resume">{{ article.resume }}</p>
+    </article>
 </section>
 
 <!-- ✅ Vue article complet -->
@@ -98,9 +101,22 @@ export default {
   `,
 
     props: {
-        page: { type: String, required: true },
-        mode: { type: String, default: "home" },
-        articles: { type: Array, required: true }
+        page: {
+            type: String,
+            required: true
+        },
+        mode: {
+            type: String,
+            default: "home"
+        },
+        articles: {
+            type: Array,
+            required: true
+        },
+        showPrincipaux :{
+            type: Boolean,
+            default: true
+        }
     },
 
     data() {
@@ -149,6 +165,6 @@ export default {
                     this.hoveredPos = rect.top + window.scrollY;
                 }
             });
-        }
+        },
     }
 };

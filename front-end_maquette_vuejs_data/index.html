@@ -15,12 +15,16 @@
     <link rel="stylesheet" href="global.css">
 </head>
 <body id="app">
-<press-header title ="Mon Site Web"></press-header>
+<press-header :title="'Mon Site Web'"
+        :showPrincipaux="showPrincipaux"
+>
+
+</press-header>
 <press-menu :user="userName" @logout="logout"></press-menu>
 <press-about v-if="currentPage==='about'"></press-about>
 <press-search v-if="currentPage ==='search'" :page="currentPage" :articles="articles"></press-search>
 <press-login v-if="currentPage === 'login'" @login-success="setUser"></press-login>
-<press-article v-if="currentPage === 'home'" :page="currentPage" mode="home" :articles="articles"></press-article>
+<press-article v-if="currentPage === 'home'" :page="currentPage" mode="home" :articles="articles" :showPrincipaux="showPrincipaux"></press-article>
 <press-article v-if="currentPage === 'articles'" :page="currentPage" mode="articles" :articles="articles"></press-article>
 <press-favoris v-if="currentPage==='favorite'"  :articles="articles"></press-favoris>
 <press-footer></press-footer>

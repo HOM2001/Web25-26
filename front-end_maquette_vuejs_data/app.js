@@ -3,7 +3,7 @@ import { createApp } from "vue";
 import ArticleList from "./components/ArticleList.js";
 import Menu from "./components/Menu.js";
 import About from "./components/About.js";
-import Header from "./components/Header.js";
+import PressHeader from "./components/Header.js";
 import Footer from "./components/Footer.js";
 import Search from "./components/Recherche.js"
 import Favoris from "./components/Favoris.js";
@@ -14,7 +14,7 @@ createApp({
   name: "App",
 
   components: {
-    'press-header' : Header,
+    'press-header' : PressHeader,
     'press-menu' : Menu,
     'press-article': ArticleList,
     'press-footer' : Footer,
@@ -28,6 +28,7 @@ createApp({
     return {
       currentPage: 'home', // Page par défaut
       userName: localStorage.getItem("userName") || null,
+      showPrincipaux : true,
       "articles" :[
       {
         "id": 1001,
@@ -299,9 +300,16 @@ createApp({
         this.userName = null;
         localStorage.removeItem("userName"); // ← suppression
         this.currentPage = "home"; // ← retour à l’accueil
-      }
+      },
+    showHidePrincipaux() {
+      console.log("✅ Événement capté !");
+      this.showPrincipaux = !this.showPrincipaux;
+    }
 
-    },
+
+
+
+  },
 
 }).mount("#app");
 
