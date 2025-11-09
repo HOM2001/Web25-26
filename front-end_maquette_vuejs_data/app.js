@@ -28,7 +28,6 @@ createApp({
     return {
       currentPage: 'home', // Page par défaut
       userName: localStorage.getItem("userName") || null,
-      showPrincipaux : true,
       "articles" :[
       {
         "id": 1001,
@@ -301,10 +300,6 @@ createApp({
         localStorage.removeItem("userName"); // ← suppression
         this.currentPage = "home"; // ← retour à l’accueil
       },
-    showHidePrincipaux() {
-      console.log("✅ Événement capté !");
-      this.showPrincipaux = !this.showPrincipaux;
-    }
 
 
 

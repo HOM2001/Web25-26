@@ -113,10 +113,6 @@ export default {
             type: Array,
             required: true
         },
-        showPrincipaux :{
-            type: Boolean,
-            default: true
-        }
     },
 
     data() {
@@ -160,7 +156,7 @@ export default {
             this.hoveredId = id;
             this.$nextTick(() => {
                 const el = this.$refs['article-' + id];
-                if (el && el[0]) {
+                if (el) {
                     const rect = el[0].getBoundingClientRect();
                     this.hoveredPos = rect.top + window.scrollY;
                 }
