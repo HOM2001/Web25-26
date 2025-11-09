@@ -13,11 +13,18 @@ export default {
         fontColor :{
             type : String,
         },
-        borderStyle:{
-            type:String,
-        }
-
+    data(){
+            return {
+                localColor:this.fontColor
+            }
     },
+        watch:{
+            localColor(newColor){
+                this.$emit("updateFontColor",newColor)
+            }
+        }
+    },
+
     methods:{
       logout(){
           this.$emit("logout")
@@ -25,7 +32,8 @@ export default {
 
 
     },
-    template : `   
+    template : ` 
+  <main class="menu-main" :style="{ color: fontColor, border: borderStyle }">
         <nav>
           <ul>
            <li><a href="#" @click.prevent="$parent.showPage('home')">Accueil</a></li>  |
@@ -40,13 +48,10 @@ export default {
           <button v-if="user"  @click="logout" class="logout-btn">Déconnexion</button>
          </ul>
         </nav>
-        <div class="presentation-options">
-        <div :style="mainStyle">
-        TEST STYLE : {{mainStyle}}
-</div>
+        </main>
   <label>
     Choisir couleur de la police :
-    <select v-model="fontColor">
+    <select v-model="localColor">
       <option value="black">Noir</option>
       <option value="blue">Bleu</option>
       <option value="red">Rouge</option>

@@ -29,7 +29,6 @@ createApp({
       currentPage: 'home', // Page par défaut
       userName: localStorage.getItem("userName") || null,
       fontColor : 'black',
-      borderStyle: 'none',
       "articles" :[
       {
         "id": 1001,

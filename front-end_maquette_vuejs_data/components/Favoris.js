@@ -5,8 +5,8 @@ export default{
             type: Array,
             required: true,
         },
-        mainStyle:{
-            type : Object,
+        fontColor:{
+            type : String,
         }
     },
     data(){
@@ -54,7 +54,7 @@ export default{
 
     },
     template: `
-    <main class="favoris-page" :style="mainStyle"
+    <main class="favoris-page" :style="mainStyle" :style="{ color: fontColor }"
 >
       <div class="favorites-bar" v-if="selectedId.length > 0 && !showFavorite">
         <button @click="goToFavorites">

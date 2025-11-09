@@ -16,7 +16,7 @@
 </head>
 <body id="app">
 <press-header :title="'Mon Site Web'"></press-header>
-<press-menu :user="userName" @logout="logout" ></press-menu>
+<press-menu :user="userName" @logout="logout" :fontColor="fontColor" @updateFontColor="fontColor=$event"></press-menu>
 <press-about v-if="currentPage==='about'" :mainStyle="mainStyle"></press-about>
 <press-search v-if="currentPage ==='search'" :page="currentPage" :articles="articles" :mainStyle="mainStyle"></press-search>
 <press-login v-if="currentPage === 'login'" @login-success="setUser" :mainStyle="mainStyle"></press-login>

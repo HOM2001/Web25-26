@@ -1,13 +1,13 @@
 export default {
     name: 'About',
     props:{
-        mainStyle:{
-            type : Object,
+        fontColor:{
+            type : String,
         }
     },
 
     template: `
-    <main class="about-page" :style="mainStyle"
+    <main class="about-page" :style="{ color: fontColor }"
 >
       <h1 class="about-title">Livrable "front-end"</h1>
       <ul class="about-list">

@@ -8,6 +8,9 @@ export default {
         articles: {
             type: Array,
             required: true,
+        },
+        fontColor: {
+            type:String
         }
     },
     data(){
@@ -51,7 +54,7 @@ export default {
 
     },
     template : `   
-   <main class="search-page" :style="mainStyle"
+   <main class="search-page" :style="{ color: fontColor }"
 >
   <h2>Recherche d'articles</h2>
 

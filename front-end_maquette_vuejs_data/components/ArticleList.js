@@ -2,7 +2,7 @@ export default {
     name: "ArticleList",
 
     template: `
-  <main class="article-list" v-show="page === 'home' || page === 'articles'" :style="mainStyle"
+  <main class="article-list" v-show="page === 'home' || page === 'articles'" :style="{ color: fontColor }"
 >
     <h3>{{ nombreArticles }} articles disponibles</h3>
     <!-- ✅ PAGE D'ACCUEIL -->
@@ -114,8 +114,8 @@ export default {
             type: Array,
             required: true
         },
-        mainStyle:{
-            type : Object,
+        fontColor:{
+            type : String,
         }
     },
 

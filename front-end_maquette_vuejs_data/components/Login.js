@@ -8,8 +8,8 @@ export default{
         }
     },
     props:{
-        mainStyle:{
-            type : Object,
+        fontColor:{
+            type : String,
         }
     },
     methods:{
@@ -30,7 +30,7 @@ export default{
 
 
     template: `
-    <main class="login-page" :style="mainStyle">
+    <main class="login-page" :style="mainStyle" :style="{ color: fontColor }">
       <h2>Connexion</h2>
       <form @submit.prevent="checkLogin" class="login-form">
         <label>Nom :</label>
