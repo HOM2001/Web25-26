@@ -18,7 +18,7 @@ export default{
               this.error = "Veuillez remplir tous les champs."
               return
           }
-          if(this.name.toLowerCase() === "owaiss" && this.password.toLowerCase() === "owaiss123"){
+          if(this.name.toLowerCase() === "alain" && this.password.toLowerCase() === "alain123"){
               this.$emit("login-success", this.name.toUpperCase());
 
               this.error = "";
@@ -30,6 +30,7 @@ export default{
 
 
     template: `
+ <!-- Formulaire de connection -->
     <main class="login-page" :style="mainStyle" :style="{ color: fontColor }">
       <h2>Connexion</h2>
       <form @submit.prevent="checkLogin" class="login-form">

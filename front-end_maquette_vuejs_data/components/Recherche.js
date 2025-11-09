@@ -59,7 +59,7 @@ export default {
   <h2>Recherche d'articles</h2>
 
   <div class="search-layout">
-    <!-- Formulaire -->
+    <!-- Formulaire de recherche  -->
     <aside class="search-form">
       <input v-model="keyword" placeholder="Mot-clé..." />
       <select v-model="selectedCategory">
@@ -91,7 +91,7 @@ export default {
 />
     </aside>
 
-    <!-- Résultats -->
+    <!-- Affichage des résultats-->
     <section class="search-results">
       <p v-if="filterArticles.length === 0">Aucun article trouvé.</p>
 
@@ -104,13 +104,6 @@ export default {
         <p>{{ article.more }}</p>
        <p> </p>
       </article>
-
-      <!-- Détail -->
-      <div v-if="selectedArticle">
-        <h3>{{ selectedArticle.title }}</h3>
-        <p>{{ selectedArticle.body }}</p>
-        <button @click="hideArticle()">Fermer</button>
-      </div>
     </section>
   </div>
 </main>

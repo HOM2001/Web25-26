@@ -5,7 +5,7 @@ export default {
 
     template : `   
           <footer class="footer">
-            <p>&copy; 2025 - Tous droits réservés</p>
+            <p>Grouge BootsTrappers : HAMID Owaiss / Amane Imane</p>
           </footer>
     `,
 }

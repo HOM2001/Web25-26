@@ -5,9 +5,9 @@ export default {
   <main class="article-list" v-show="page === 'home' || page === 'articles'" :style="{ color: fontColor }"
 >
     <h3>{{ nombreArticles }} articles disponibles</h3>
-    <!-- ✅ PAGE D'ACCUEIL -->
+    <!-- Page d'accueil -->
     <div v-if="page === 'home'" class="home-layout">
-      <!-- ⭐ Article phare -->
+      <!-- Article Main -->
       <section class="article-phare">
         <h2>{{ articleMain.title }}</h2>
         <img :src="'./media/' + articleMain.image" alt="illustration" />
@@ -18,7 +18,7 @@ export default {
         </div>
       </section>
 
-      <!-- 🔷 Articles principaux + secondaires -->
+      <!-- Articles principaux  -->
       <div class="articles-group">
         <section  class="articles-principaux">
           <article
@@ -34,7 +34,7 @@ export default {
             <p>{{ article.resume }}</p>
           </article>
         </section>
-
+  <!-- Articles secondaires  -->
         <section class="articles-secondaires">
           <ul>
             <li
@@ -59,7 +59,7 @@ export default {
         </section>
       </div>
 
-      <!-- 🖱️ Métadonnées au survol -->
+      <!--  Données au survol -->
       <aside v-if="hoveredId" class="article-meta-home" :style="{top: hoveredPos + 'px'}">
         <div v-for="article in extendedArticles" :key="article.id">
           <div v-if="article.id === hoveredId">
@@ -72,7 +72,7 @@ export default {
       </aside>
     </div>
 
-  <!-- ✅ Vue liste des articles -->
+  <!--  Vue liste des articles dans la page d'articles -->
 <section v-if="page === 'articles' && !selectedArticle" class="articles grid-layout">
   <article
     v-for="article in articles"
@@ -90,7 +90,7 @@ export default {
     </article>
 </section>
 
-<!-- ✅ Vue article complet -->
+<!--  Vue article complet -->
 <section v-if="page === 'articles' && selectedArticle" class="article-full-view">
   <h2>{{ selectedArticle.title }}</h2>
   <img :src="'./media/' + selectedArticle.image" alt="illustration" />
@@ -125,7 +125,7 @@ export default {
 
     data() {
         return {
-            mainArticles: 8,
+            mainArticles: 10,
             selectedArticle: null,
             hoveredId: null,
             hoveredPos: 0,

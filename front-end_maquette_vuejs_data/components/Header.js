@@ -7,6 +7,7 @@ export default {
     template: `   
           <header class="header">
             <h1>{{ title }} </h1>
+             <!-- Affichage des coordonnées de la souris-->
             <div class="mouse-coords">
   X: {{ x }} | Y: {{ y }}
 </div>

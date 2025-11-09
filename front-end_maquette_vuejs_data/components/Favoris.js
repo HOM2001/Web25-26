@@ -20,9 +20,7 @@ export default{
       selectedArticles(){
           return this.articles.filter(art => this.selectedId.includes((art.id)))
       },
-      lastArticle(){
-          return this.articles.find(art => art.id === this.lastSelected);
-      }
+
     },
     methods: {
         addFavorite(id) {
