@@ -38,7 +38,7 @@ export default {
         <section class="articles-secondaires">
           <ul>
             <li
-              v-for="article in articlesSecondaires"
+              v-for="article in visibleSecondaryArticles"
               :key="article.id"
               class="article-secondaire"
               @mouseover="setHovered(article.id)"
@@ -52,6 +52,10 @@ export default {
 </p>
             </li>
           </ul>
+          <button @click="showAllSecondary = !showAllSecondary">
+  {{ showAllSecondary ? 'Voir moins' : 'Lire plus' }}
+</button>
+
         </section>
       </div>
 
@@ -125,12 +129,13 @@ export default {
             selectedArticle: null,
             hoveredId: null,
             hoveredPos: 0,
+            showAllSecondary:false
         };
     },
 
     computed: {
         extendedArticles() {
-            return this.articles.slice(0,8);
+            return this.articles.slice(0,10);
         },
         articleMain() {
             return this.extendedArticles[0];
@@ -139,8 +144,14 @@ export default {
             return this.extendedArticles.slice(1, 4);
         },
         articlesSecondaires() {
-            return this.extendedArticles.slice(4, 8);
+            return this.extendedArticles.slice(4, 10);
         },
+        visibleSecondaryArticles() {
+            return this.showAllSecondary
+                ? this.articlesSecondaires
+                : this.articlesSecondaires.slice(4, 6);
+        },
+
         nombreArticles() {
             return this.mode === "home" ? this.mainArticles : this.articles.length;
         },
