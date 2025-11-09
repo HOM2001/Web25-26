@@ -7,7 +7,9 @@ export default {
     template: `   
           <header class="header">
             <h1>{{ title }} - Page : {{ $parent.currentPage }}</h1>
-            
+            <div class="mouse-coords">
+  X: {{ x }} | Y: {{ y }}
+</div>
           </header>
     `,
 
@@ -18,6 +20,27 @@ export default {
         },
 
     },
+    data() {
+        return {
+            x: 0,
+            y: 0,
+        }
+    },
+    mounted() {
+        window.addEventListener("mousemove", this.updateMouse);
+    },
+    beforeUnmount() {
+        window.removeEventListener("mousemove", this.updateMouse);
+    },
+
+    methods: {
+            updateMouse(e) {
+                this.x = e.clientX;
+                this.y = e.clientY;
+            }
+
+
+    }
 
 
 

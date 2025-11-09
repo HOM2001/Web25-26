@@ -28,6 +28,8 @@ createApp({
     return {
       currentPage: 'home', // Page par défaut
       userName: localStorage.getItem("userName") || null,
+      fontColor : 'black',
+      borderStyle: 'none',
       "articles" :[
       {
         "id": 1001,
@@ -282,6 +284,14 @@ createApp({
        ]
 
       };
+  },
+  computed :{
+    mainStyle(){
+      return {
+        color :this.fontColor,
+        border:this.borderStyle,
+      }
+    }
   },
 
   methods: {

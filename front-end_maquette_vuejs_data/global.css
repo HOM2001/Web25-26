@@ -649,3 +649,8 @@ nav ul {
 .logout-btn:hover {
     background-color: #cc0000;
 }
+.mouse-coords {
+    font-size: 0.9rem;
+    color: #555;
+    margin-top: 0.5rem;
+}

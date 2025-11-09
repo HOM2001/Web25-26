@@ -7,6 +7,11 @@ export default{
             error:""
         }
     },
+    props:{
+        mainStyle:{
+            type : Object,
+        }
+    },
     methods:{
       checkLogin(){
           if(!this.name || !this.password){
@@ -25,7 +30,7 @@ export default{
 
 
     template: `
-    <main class="login-page">
+    <main class="login-page" :style="mainStyle">
       <h2>Connexion</h2>
       <form @submit.prevent="checkLogin" class="login-form">
         <label>Nom :</label>

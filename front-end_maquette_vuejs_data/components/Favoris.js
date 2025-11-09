@@ -4,6 +4,9 @@ export default{
         articles: {
             type: Array,
             required: true,
+        },
+        mainStyle:{
+            type : Object,
         }
     },
     data(){
@@ -51,7 +54,8 @@ export default{
 
     },
     template: `
-    <main class="favoris-page">
+    <main class="favoris-page" :style="mainStyle"
+>
       <div class="favorites-bar" v-if="selectedId.length > 0 && !showFavorite">
         <button @click="goToFavorites">
           🛒 Voir mes favoris ({{ selectedId.length }})

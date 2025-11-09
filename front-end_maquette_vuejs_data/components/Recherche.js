@@ -14,21 +14,29 @@ export default {
         return {
             keyword:"",
             selectedCategory:"",
-            selectedArticle:null
+            selectedAuthor:"",
+            selectedArticle:null,
+            maxArticles:10,
         };
 
     },
     computed: {
+        uniqueAuthor() {
+            const all = this.articles.map(a => a.author);
+            return [...new Set(all)].filter(Boolean); // évite les doublons et les vides
+        },
         filterArticles() {
             const kw = this.keyword.toLowerCase();
             const cat = this.selectedCategory.toLowerCase();
+            const auth = this.selectedAuthor.toLowerCase();
             return this.articles.filter(article => {
             const matchT =
                 article.title.toLowerCase().includes(kw) ||
                 article.more.toLowerCase().includes(kw) ||
                 article.body.toLowerCase().includes(kw);
             const matchCat = cat ? article.category.toLowerCase() === cat : true;
-            return matchT && matchCat;
+            const matchAuth = auth ? article.author.toLowerCase()===auth: true;
+            return matchT && matchCat && matchAuth;
         });
         }
     },
@@ -43,7 +51,8 @@ export default {
 
     },
     template : `   
-   <main class="search-page">
+   <main class="search-page" :style="mainStyle"
+>
   <h2>Recherche d'articles</h2>
 
   <div class="search-layout">
@@ -58,6 +67,25 @@ export default {
         <option value="Backend">Backend</option>
         <option value="Outils">Outils</option>
         </select>
+        <label>Auteur :</label>
+<select v-model="selectedAuthor">
+  <option value="">Tous</option>
+  <option
+    v-for="author in uniqueAuthor"
+    :key="author"
+    :value="author"
+  >
+   {{author}}
+  </option>
+</select>
+<label>Nombre max d’articles :</label>
+<input
+  type="number"
+  v-model.number="maxArticles"
+  min="1"
+  max="50"
+  placeholder="Ex: 10"
+/>
     </aside>
 
     <!-- Résultats -->
@@ -65,7 +93,7 @@ export default {
       <p v-if="filterArticles.length === 0">Aucun article trouvé.</p>
 
       <article
-        v-for="article in filterArticles"
+        v-for="article in filterArticles.slice(0,maxArticles)"
         :key="article.id"
         @click="showArticle(article)"
       >
