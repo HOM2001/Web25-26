@@ -13,10 +13,11 @@
     </script>
     <script type="module"  src="app.js"></script>
     <link rel="stylesheet" href="global.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
 </head>
 <body id="app">
-<press-header :title="'Mon Site Web'"></press-header>
 <press-menu :user="userName" @logout="logout" :fontColor="fontColor" @updateFontColor="fontColor=$event"></press-menu>
+<press-header></press-header>
 <press-about v-if="currentPage==='about'" :mainStyle="mainStyle"></press-about>
 <press-search v-if="currentPage ==='search'" :page="currentPage" :articles="articles" :mainStyle="mainStyle"></press-search>
 <press-login v-if="currentPage === 'login'" @login-success="setUser" :mainStyle="mainStyle"></press-login>
@@ -25,5 +26,6 @@
 <press-favoris v-if="currentPage==='favorite'"  :articles="articles" :mainStyle="mainStyle"></press-favoris>
 <press-footer></press-footer>
 
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
 </body>
 </html>
