@@ -56,7 +56,7 @@ export default{
 >
       <div class="favorites-bar" v-if="selectedId.length > 0 && !showFavorite">
         <button @click="goToFavorites">
-          🛒 Voir mes favoris ({{ selectedId.length }})
+           Voir mes favoris ({{ selectedId.length }})
         </button>
       </div>
 
